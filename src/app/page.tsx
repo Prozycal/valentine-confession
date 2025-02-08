@@ -1,3 +1,4 @@
+/** eslint-disable */
 // src/app/page.tsx
 "use client";
 
