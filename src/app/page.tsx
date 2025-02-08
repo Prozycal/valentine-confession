@@ -47,7 +47,7 @@ const HomePage = () => {
     setNoClickCount(noClickCount + 1);
   };
 
-  const particlesInit = async (engine: any) => {
+  const particlesInit = async (engine: Engine) => {
     await loadSlim(engine);
   };
 
