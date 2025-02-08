@@ -6,6 +6,7 @@ import confetti from "canvas-confetti";
 import { motion, AnimatePresence } from "framer-motion";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
+import type { Engine } from "tsparticles-engine";
 
 const HomePage = () => {
   const [message, setMessage] = useState("Would you be my valentine?");
@@ -19,16 +20,18 @@ const HomePage = () => {
     setNoButtonPosition({ x: randomX, y: randomY });
   };
 
-  const handleYesClick = () => {
-    setMessage("😳");
-    setImage("/yes.jpg");
-    setShowButtons(false);
-    confetti({
-      particleCount: 150,
-      spread: 70,
-      origin: { y: 0.6 },
-    });
-  };
+const handleYesClick = () => {
+  setMessage("Yay! I'm so happy!");
+  setImage("/yes.jpg");
+  setShowButtons(false);
+
+  confetti({
+    particleCount: 150,
+    spread: 70,
+    origin: { y: 0.6 },
+  } as import("canvas-confetti").Options);
+};
+
 
   const handleNoClick = () => {
     if (noClickCount === 0) {
