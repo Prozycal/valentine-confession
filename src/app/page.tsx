@@ -1,4 +1,3 @@
-// src/app/page.tsx
 "use client";
 
 import { useState } from "react";
@@ -6,7 +5,7 @@ import confetti, { Options } from "canvas-confetti";
 import { motion, AnimatePresence } from "framer-motion";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
-import type { Engine } from "tsparticles-engine";
+import type { Engine, ISourceOptions } from "tsparticles-engine";
 
 const HomePage = () => {
   const [message, setMessage] = useState("Would you be my valentine?");
@@ -56,7 +55,7 @@ const HomePage = () => {
     await loadSlim(engine);
   };
 
-  const particlesOptions = {
+  const particlesOptions: ISourceOptions = {
     background: {
       color: {
         value: "transparent",
@@ -82,7 +81,7 @@ const HomePage = () => {
       shape: { type: "circle" },
       opacity: { value: 0.5 },
       size: { value: { min: 1, max: 5 } },
-      move: { enable: true, speed: 1, outModes: { default: "bounce" as const } },
+      move: { enable: true, speed: 1, outModes: { default: "bounce" } },
     },
     detectRetina: true,
   };
@@ -173,7 +172,7 @@ const HomePage = () => {
             <motion.a
               whileHover={{ scale: 1.05, boxShadow: "0px 0px 8px rgb(34,197,94)" }}
               whileTap={{ scale: 0.95 }}
-              href="https://wa.me/6281215219801?text=hai" // Ubah sesuai nomor WhatsApp Anda
+              href="https://wa.me/6281215219801?text=hai" // Change this to your WhatsApp number
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 bg-green-500 text-white rounded-full font-semibold transition duration-300"
