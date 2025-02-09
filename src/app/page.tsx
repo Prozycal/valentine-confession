@@ -1,3 +1,4 @@
+// src/app/page.tsx
 "use client";
 
 import { useState } from "react";
@@ -5,7 +6,8 @@ import confetti, { Options } from "canvas-confetti";
 import { motion, AnimatePresence } from "framer-motion";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
-import type { Engine, ISourceOptions } from "tsparticles-engine";
+import type { Engine } from "tsparticles-engine";
+import { particlesConfig } from "./utils/particlesConfig";
 
 const HomePage = () => {
   const [message, setMessage] = useState("Would you be my valentine?");
@@ -55,43 +57,12 @@ const HomePage = () => {
     await loadSlim(engine);
   };
 
-  const particlesOptions: ISourceOptions = {
-    background: {
-      color: {
-        value: "transparent",
-      },
-    },
-    fpsLimit: 60,
-    interactivity: {
-      events: {
-        onClick: { enable: true, mode: "push" },
-        onHover: { enable: true, mode: "repulse" },
-      },
-      modes: {
-        push: { quantity: 4 },
-        repulse: { distance: 100, duration: 0.4 },
-      },
-    },
-    particles: {
-      number: {
-        value: 50,
-        density: { enable: true, area: 800 },
-      },
-      color: { value: "#ffffff" },
-      shape: { type: "circle" },
-      opacity: { value: 0.5 },
-      size: { value: { min: 1, max: 5 } },
-      move: { enable: true, speed: 1, outModes: { default: "bounce" } },
-    },
-    detectRetina: true,
-  };
-
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-pink-500 to-pink-300 p-6 overflow-hidden">
       <Particles
         id="tsparticles"
         init={particlesInit}
-        options={particlesOptions}
+        options={particlesConfig}
         style={{
           position: "absolute",
           top: 0,
@@ -172,7 +143,7 @@ const HomePage = () => {
             <motion.a
               whileHover={{ scale: 1.05, boxShadow: "0px 0px 8px rgb(34,197,94)" }}
               whileTap={{ scale: 0.95 }}
-              href="https://wa.me/6281215219801?text=hai" // Change this to your WhatsApp number
+              href="https://wa.me/6281215219801?text=hai"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 bg-green-500 text-white rounded-full font-semibold transition duration-300"
