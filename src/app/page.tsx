@@ -82,7 +82,7 @@ const HomePage = () => {
       shape: { type: "circle" },
       opacity: { value: 0.5 },
       size: { value: { min: 1, max: 5 } },
-      move: { enable: true, speed: 1, outModes: { default: "bounce" } },
+      move: { enable: true, speed: 1, outModes: { default: "bounce" as const } },
     },
     detectRetina: true,
   };
