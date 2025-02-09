@@ -2,7 +2,7 @@
 "use client";
 
 import { useState } from "react";
-import confetti from "canvas-confetti";
+import confetti, { Options } from "canvas-confetti";
 import { motion, AnimatePresence } from "framer-motion";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
@@ -14,24 +14,26 @@ const HomePage = () => {
   const [noClickCount, setNoClickCount] = useState(0);
   const [showButtons, setShowButtons] = useState(true);
   const [noButtonPosition, setNoButtonPosition] = useState({ x: 0, y: 0 });
+
   const handleNoHover = () => {
     const randomX = Math.floor(Math.random() * 100) - 100;
     const randomY = Math.floor(Math.random() * 200) - 100;
     setNoButtonPosition({ x: randomX, y: randomY });
   };
 
-const handleYesClick = () => {
-  setMessage("Yay! I'm so happy!");
-  setImage("/yes.jpg");
-  setShowButtons(false);
+  const handleYesClick = () => {
+    setMessage("Yay! I'm so happy!");
+    setImage("/yes.jpg");
+    setShowButtons(false);
 
-  confetti({
-    particleCount: 150,
-    spread: 70,
-    origin: { y: 0.6 },
-  } as import("canvas-confetti").Options);
-};
+    const confettiOptions: Options = {
+      particleCount: 150,
+      spread: 70,
+      origin: { y: 0.6 },
+    };
 
+    confetti(confettiOptions);
+  };
 
   const handleNoClick = () => {
     if (noClickCount === 0) {
@@ -171,7 +173,7 @@ const handleYesClick = () => {
             <motion.a
               whileHover={{ scale: 1.05, boxShadow: "0px 0px 8px rgb(34,197,94)" }}
               whileTap={{ scale: 0.95 }}
-              href="https://wa.me/6281215219801?text=hai" // Change this to your WhatsApp number
+              href="https://wa.me/6281215219801?text=hai" // Ubah sesuai nomor WhatsApp Anda
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 bg-green-500 text-white rounded-full font-semibold transition duration-300"
